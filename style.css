@@ -1,0 +1,183 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  transition: 0.5s linear;
+  scroll-behavior: smooth;
+  font-family: "Poppins", sans-serif;
+  /* border: 2px solid red; */
+}
+html {
+}
+.cont {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+
+  width: 100%;
+  /* background: #74baffc4; */
+  background: linear-gradient(to right top, #65dfc9, #6cdbeb);
+}
+
+.cont .note {
+  /* min-width: 500px; */
+  /* max-width: 600px; */
+  /* max-height: 90vh; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 20px 25px;
+  padding-top: 10px;
+  border-radius: 10px;
+  background: white;
+  background: linear-gradient(
+    to right bottom,
+    rgba(255, 255, 255, 0.7),
+    rgba(255, 255, 255, 0.3)
+  );
+  z-index: 2;
+  backdrop-filter: blur(2rem);
+}
+
+.cont .note h1 {
+  font-size: 2.5rem;
+}
+
+.cont .note h1 {
+  text-align: center;
+}
+.addnote {
+  width: 100%;
+  height: 80px;
+  padding: 10px;
+  position: relative;
+}
+
+.addnote .far {
+  font-size: 25px;
+}
+.btn {
+  width: 50px;
+  height: 80%;
+  background-color: #74b9ff;
+  outline: none;
+  border: none;
+  border-radius: 10px;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: 2px 2px 10px -4px grey;
+}
+#btnnote {
+  width: 50px;
+  height: 64%;
+  position: absolute;
+  margin: 0 10px;
+  top: 10px;
+  /* right: 30px; */
+  box-shadow: 2px 2px 10px -4px grey;
+}
+
+#input {
+  height: 90%;
+  width: 80%;
+  padding: 10px 20px;
+  outline: none;
+  border: none;
+  border-radius: 10px;
+  font-size: 20px;
+  background: linear-gradient(
+    to right bottom,
+    rgba(255, 255, 255, 0.7),
+    rgba(255, 255, 255, 0.3)
+  );
+  box-shadow: 2px 2px 10px -4px grey;
+}
+.notes {
+  max-height: 45vh;
+  overflow-y: auto;
+  width: 100%;
+}
+
+.notes::-webkit-scrollbar {
+  display: none;
+}
+.cont .notes ul {
+  width: 100%;
+  display: flex;
+  padding: 5px;
+  flex-direction: column;
+  gap: 15px;
+}
+.cont .notes ul li {
+  display: inline-block;
+  width: 100%;
+  list-style: none;
+  background: linear-gradient(
+    to right bottom,
+    rgba(255, 255, 255, 0.6),
+    rgba(255, 255, 255, 0.2)
+  );
+  padding: 15px 20px;
+
+  border-radius: 10px;
+  position: relative;
+  /* overflow: hidden; */
+}
+.cont ul li .btn .far {
+  font-size: 20px;
+}
+.cont .note ul li button {
+  position: absolute;
+  right: -40%;
+  /* right: -60px; */
+  width: 45px;
+  top: 10px;
+  transition: 0.3s ease;
+}
+.cont .note ul li:hover button {
+  position: absolute;
+  /* right: 5px; */
+  right: 5%;
+  top: 6%;
+}
+.cont .result {
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: start;
+  gap: 10px;
+  text-align: start;
+  width: 100%;
+  height: 70px;
+  padding: 20px;
+  margin: 10px auto 0px;
+  /* position: relative; */
+  /* margin-top: 15px; */
+  background: linear-gradient(
+    to right bottom,
+    rgba(255, 255, 255, 0.8),
+    rgba(255, 255, 255, 0.2)
+  );
+
+  border-radius: 10px;
+  box-shadow: 2px 2px 10px -4px grey;
+}
+.cont .result button {
+  /* position: absolute; */
+  height: 100%;
+  /* right: 20px; */
+  /* top: 11px; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 10px;
+  width: 100px;
+  /* padding: 5px 10px; */
+  font-size: 15px;
+  background-color: #74b9ff;
+  border-radius: 8px;
+}

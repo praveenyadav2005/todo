@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/fontawesome.min.css"
+      integrity="sha384-wESLQ85D6gbsF459vf1CiZ2+rr+CsxRY0RpiF1tLlQpDnAgg6rwdsUF1+Ics2bni"
+      crossorigin="anonymous"
+    />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/d3fc2c26f2.js"
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      input {
+        width: 90%;
+      }
+    </style>
+    <link rel="stylesheet" href="./style.css" />
+
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div class="cont">
+      <div class="note">
+        <h1>To do</h1>
+        <div class="addnote">
+          <input
+            type="text"
+            name=""
+            id="input"
+            placeholder="Add your note...."
+          />
+          <span><button class="btn" id="btnnote">
+              <i class="far fa-edit"></i>
+            </button></span>
+        </div>
+        <div class="notes">
+          <ul></ul>
+        </div>
+        <div class="result">
+          You have <b id="count">0</b> task to Do
+          <button class="btn">Clear all</button>
+        </div>
+      </div>
+    </div>
+    <script>
+      const listContainer = document.querySelector("ul");
+      let inputValue = document.getElementById("input");
+      let addNote = document.getElementById("btnnote");
+      let noteCount = document.getElementById("count");
+      let deleteAllBtn = document.querySelector(".result .btn");
+      let noteArray = [];
+
+      const storedNotes = localStorage.getItem("To do Project");
+      if (storedNotes) {
+        noteArray = JSON.parse(storedNotes);
+      }
+      let count = 0;
+      if (noteArray) count = noteArray.length;
+
+      const addList = (liValve) => {
+        let list = document.createElement("li");
+        list.textContent = liValve;
+        listContainer.append(list);
+        let delbtn = document.createElement("button");
+        delbtn.classList.add("btn");
+        delbtn.classList.add("delbtn");
+        delbtn.innerHTML = '<i class="far fa-trash-alt"></i>';
+        list.append(delbtn);
+        noteCount.innerText = count;
+        delbtn.addEventListener("click", () => {
+          list.remove();
+          noteArray.splice(noteArray.indexOf(liValve), 1);
+          localStorage.setItem("To do Project", JSON.stringify(noteArray));
+          count--;
+          noteCount.innerText = count;
+        });
+      };
+      const showingData = () => {
+        if (count) {
+          for (let item of noteArray) {
+            addList(item);
+          }
+        }
+      };
+
+      showingData();
+
+      const AddNote = () => {
+        if (inputValue.value) {
+          noteArray.push(inputValue.value);
+          localStorage.setItem("To do Project", JSON.stringify(noteArray));
+          addList(inputValue.value);
+          count++;
+          noteCount.innerText = count;
+        }
+        inputValue.value = "";
+      };
+
+      addNote.addEventListener("click", () => {
+        AddNote();
+      });
+
+      deleteAllBtn.addEventListener("click", () => {
+        noteArray.length = 0;
+        listContainer.innerHTML = "";
+        localStorage.setItem("To do Project", JSON.stringify(noteArray));
+        count = 0;
+        noteCount.innerText = count;
+      });
+    </script>
+  </body>
+</html>
