@@ -33,6 +33,7 @@
     <div class="cont">
       <div class="note">
         <h1>To do</h1>
+      
         <div class="addnote">
           <input
             type="text"
@@ -97,10 +98,14 @@
       showingData();
 
       const AddNote = () => {
-        if (inputValue.value) {
-          noteArray.push(inputValue.value);
+        if (inputValue.value.trim()) {
+
+          let listContent = `[${new Date().toLocaleString()}]  ${inputValue.value.trim()}`;
+          noteArray.push(listContent);
+          // noteArray.push(inputValue.value);
           localStorage.setItem("To do Project", JSON.stringify(noteArray));
-          addList(inputValue.value);
+          addList(listContent);
+          // addList(inputValue.value);
           count++;
           noteCount.innerText = count;
         }
